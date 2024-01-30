@@ -7,7 +7,7 @@ Feature:  OpenMrs
     Examples:
     |username|Admin|
     |password|Admin123|
-    |headr   |Logged in as Super User (admin) at Registration Desk.|
+    |header   |Logged in as Super User (admin) at Registration Desk.|
 
 
 
