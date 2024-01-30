@@ -17,3 +17,4 @@ public class OpenMRShook {
         driver.get(ConfigReader.readProperty("URL"));
     }
 }
+

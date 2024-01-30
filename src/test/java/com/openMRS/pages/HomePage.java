@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.BrowserUtils;
 
 import java.util.List;
 
@@ -46,6 +47,15 @@ public class HomePage {
 
     @FindBy(xpath = "//i[@class='icon-home small']")
     WebElement iconHome;
+
+    @FindBy(xpath = "h4")
+    WebElement header;
+
+    public void validateHeader (String header){
+        Assert.assertEquals(BrowserUtils.getText(this.header),header);
+
+    }
+
 
 
     public void validateTitles(List<String> allTitles){
