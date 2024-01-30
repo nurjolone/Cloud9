@@ -35,9 +35,7 @@ public class LoginOpenMRS {
     }
 
 
-//    public void setDriver(){
-//        driver = DriverHelper.getDriver();
-//    }
+
 
 
 
