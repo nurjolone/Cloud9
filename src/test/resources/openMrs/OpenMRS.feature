@@ -5,9 +5,9 @@ Feature:  OpenMrs
     And user validates that  user in Home page by validating  '<headr>'
 
     Examples:
-    |username|Admin|
-    |password|Admin123|
-    |headr   |Logged in as Super User (admin) at Registration Desk.|
+      | username | Admin                                                 |
+      | password | Admin123                                              |
+      | headr    | Logged in as Super User (admin) at Registration Desk. |
 
 
 
