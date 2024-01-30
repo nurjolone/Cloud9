@@ -3,10 +3,7 @@ Feature:  OpenMrs
 
 Background: Login functionality
     Given user in OpenMrs page provides 'Admin' and 'Admin123'
-
-
-
-    Then user clicks Registration Desk and clicks loginBtn
+   Then user clicks Registration Desk and clicks loginBtn
 
   Scenario Outline:  OpenMrs
     And user validates that  user in Home page by validating  '<header>'
