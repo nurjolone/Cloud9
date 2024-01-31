@@ -49,7 +49,7 @@ Background: Login functionality
       | System Administration  |
 
 
-@TC01
+#@TC01
   Scenario Outline: find patient
     Given user on main page clicks on find patient button
     Then user enters '<given>' and '<familyName>' and clicks enter
