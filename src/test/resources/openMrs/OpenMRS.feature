@@ -49,7 +49,7 @@ Background: Login functionality
       | System Administration  |
 
 
-@TC01
+#@TC01
   Scenario Outline: find patient
     Given user on main page clicks on find patient button
     Then user enters '<given>' and '<familyName>' and clicks enter
@@ -57,12 +57,15 @@ Background: Login functionality
     Then user clicks on delete patient button and types reason and click confirm
 
     Examples:
-      | given  | familyName |
-      | Azamat | Kaldarbaev |
-#      | codefish | codefish   |
-#      | Codefish | Codefish18 |
-#      | a        | c          |
-#      | a        | g          |
+      | given    | familyName |
+      | Azamat   | Kaldarbaev |
+      | codefish | codefish   |
+      | Codefish | Codefish18 |
+      | a        | c          |
+      | a        | g          |
+      | az       | az         |
+      | Nikolay  | Nikolay    |
+
 
 
 
