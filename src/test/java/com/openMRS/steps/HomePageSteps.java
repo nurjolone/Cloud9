@@ -14,10 +14,6 @@ public class HomePageSteps {
     HomePage homePage = new HomePage(driver);
 
 
-    @Given("user validates that  user in Home page by validating  {string}")
-    public void user_validates_that_user_in_home_page_by_validating(String header) {
-        homePage.validateHeader(driver,header);
-    }
 
     @Given("user in home page get all registration desks")
     public void user_in_home_page_get_all_registration_desks() {

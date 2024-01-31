@@ -51,13 +51,12 @@ public class HomePage {
     @FindBy(xpath = "//i[@class='icon-home small']")
     WebElement iconHome;
 
-    @FindBy(xpath = "//h4")
+    @FindBy(xpath = "//div[@class='col-12 col-sm-12 col-md-12 col-lg-12']//h4")
     WebElement header;
 
     public void validateHeader (WebDriver driver, String header){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOf(this.header));
-
         Assert.assertEquals(BrowserUtils.getText(this.header),header);
 
     }
