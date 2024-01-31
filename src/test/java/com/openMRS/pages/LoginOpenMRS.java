@@ -28,6 +28,14 @@ public class LoginOpenMRS {
     WebElement errorMessage;
     @FindBy(css = "li[class='nav-item logout']")
     WebElement logout;
+    @FindBy(css = "div[class='logo']")
+    WebElement openMrsLogo;
+    @FindBy(xpath = "//a[@id='cantLogin']")
+    WebElement cantLoginBtn;
+    @FindBy(xpath = "//p[@class='dialog-instructions']")
+    WebElement popupMessage;
+    @FindBy(xpath = "//button[@class='confirm']")
+    WebElement okBtn;
 
 
     public void userNameAndPasswordFiled(String userName, String password){
@@ -57,8 +65,19 @@ public class LoginOpenMRS {
         wait.until(ExpectedConditions.visibilityOf(this.errorMessage));
         Assert.assertEquals(BrowserUtils.getText(this.errorMessage),errorMessage,
                 "failed during error message check");
-
-
+    }
+    public void clickOpenMrsCantLoginBtn(WebDriver driver) throws InterruptedException {
+        BrowserUtils.clickWithActions(driver,openMrsLogo);
+        Thread.sleep(2000);
+        BrowserUtils.clickWithJs(driver,cantLoginBtn);
+        Thread.sleep(2000);
+    }
+    public void validatePopupMsg(WebDriver driver,String popupMessage) throws InterruptedException {
+        Thread.sleep(3000);
+        Assert.assertEquals(BrowserUtils.getText(this.popupMessage),popupMessage,
+                "failed during popup message validation");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        BrowserUtils.clickWithJs(driver,okBtn);
     }
 
 
