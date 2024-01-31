@@ -1,5 +1,7 @@
 Feature:  OpenMrs
 
+
+#  Login
 Background: Login functionality
     Given user in OpenMrs page provides 'Admin' and 'Admin123'
     Then user clicks Registration Desk and clicks loginBtn
@@ -32,8 +34,7 @@ Background: Login functionality
       |Admin   |Admin123|Please contact your System Administrator.|
 
 
-#@smoke
-
+#HomePageValidate
   Scenario: Validate Home Page
     Then user  clicks on every desks and validate title and click on home button:
       | Find Patient Record    |
