@@ -3,7 +3,7 @@ Feature:  OpenMrs
 
 Background: Login functionality
     Given user in OpenMrs page provides 'Admin' and 'Admin123'
-   Then user clicks Registration Desk and clicks loginBtn
+    Then user clicks Registration Desk and clicks loginBtn
 
   Scenario Outline: negative path Login
     Given user in OpenMrs page provides invalid '<invalidUserName>' and '<invalidPassword>'
@@ -22,8 +22,12 @@ Background: Login functionality
       | header                                                |
       | Logged in as Super User (admin) at Registration Desk. |
 
+<<<<<<< HEAD
 
 
+=======
+@smoke
+>>>>>>> master
   Scenario: Validate Home Page
     Then user  clicks on every desks and validate title and click on home button:
       | Find Patient Record    |

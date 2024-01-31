@@ -23,7 +23,7 @@ public class HomePageSteps {
     public void user_in_home_page_get_all_registration_desks() {
     }
     @Then("user  clicks on every desks and validate title and click on home button:")
-    public void user_clicks_on_every_desks_and_validate_title_and_click_on_home_button(io.cucumber.datatable.DataTable dataTable) {
+    public void user_clicks_on_every_desks_and_validate_title_and_click_on_home_button(io.cucumber.datatable.DataTable dataTable){
         List<String> titles = dataTable.asList();
         homePage.validateTitles(titles);
     }

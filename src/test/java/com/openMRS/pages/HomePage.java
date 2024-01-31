@@ -65,36 +65,48 @@ public class HomePage {
 
 
     public void validateTitles(List<String> allTitles){
+        System.out.println(desks.size()); // 9
+        System.out.println(desks.get(2).getText());
         for (int i = 0; i < desks.size(); i++) {
+            String a = desks.get(i).getText();
             desks.get(i).click();
-            switch (desks.get(i).getText().trim()){
+            switch (a){
                 case "Find Patient Record":
                     Assert.assertEquals(allTitles.get(0), patientRecordTitle.getText());
                     iconHome.click();
+                    break;
                 case "Active Visits":
                     Assert.assertEquals(allTitles.get(1), activeVisitsTitle.getText());
                     iconHome.click();
+                    break;
                 case "Capture Vitals":
                     Assert.assertEquals(allTitles.get(2), vitalsTitle.getText());
                     iconHome.click();
+                    break;
                 case "Register a patient":
                     Assert.assertEquals(allTitles.get(3), registerPatient.getText());
                     iconHome.click();
+                    break;
                 case "Appointment Scheduling":
                     Assert.assertEquals(allTitles.get(4), appointmentSchedulingTitle.getText());
                     iconHome.click();
+                    break;
                 case "Reports":
                     Assert.assertEquals(allTitles.get(5), reportsTitle.getText());
                     iconHome.click();
+                    break;
                 case "Data Management":
                     Assert.assertEquals(allTitles.get(6), dataManagementTitle.getText());
                     iconHome.click();
+                    break;
                 case "Configure Metadata":
                     Assert.assertEquals(allTitles.get(7), metadataTitle.getText());
                     iconHome.click();
+                    break;
                 case "System Administration":
                     Assert.assertEquals(allTitles.get(8), administrationTitle.getText());
                     iconHome.click();
+                    break;
             }
         }
     }
