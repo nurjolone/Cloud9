@@ -3,9 +3,6 @@ Feature:  OpenMrs
 
 Background: Login functionality
     Given user in OpenMrs page provides 'Admin' and 'Admin123'
-
-
-
     Then user clicks Registration Desk and clicks loginBtn
 
   Scenario Outline:  OpenMrs
@@ -15,7 +12,7 @@ Background: Login functionality
       | header                                                |
       | Logged in as Super User (admin) at Registration Desk. |
 
-
+@smoke
   Scenario: Validate Home Page
     Then user  clicks on every desks and validate title and click on home button:
       | Find Patient Record    |
