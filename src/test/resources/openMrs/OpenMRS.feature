@@ -47,6 +47,30 @@ Background: Login functionality
       | System Administration  |
 
 
+    Scenario Outline: Change person info
+      Given User is on home page and clicks button System Administration and clicks Advanced Administration
+      Then User clicks button Manage Person
+      And User enters '<name>' into line Person Name and clicks checkbox Include deleted
+      And user clicks on person info line
+      Then User deletes existing address in line Address and enter '<newAddress>' and clicks the button Save Patient
+      And User comes back on home page by clicking link Home
+      Then User is on home page and clicks button Find Person Record
+      And enters patient '<findPersonName>' in the insert line and click Enter
+      And User clicks dropdown Show Contact Info and validates information about address
+
+      Examples:
+      |name|newAddress|findPersonName|
+      |Tina Tina|17Florida|Tina Tina |
+
+
+
+
+
+
+
+
+
+
 
 
 
