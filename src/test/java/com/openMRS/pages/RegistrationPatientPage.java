@@ -1,5 +1,7 @@
 package com.openMRS.pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -70,6 +72,9 @@ public class RegistrationPatientPage {
     @FindBy(css = "input[id='submit']")
     WebElement submitButton;
 
+    @FindBy(xpath = "//i[@class='icon-home small']")
+    WebElement iconHome;
+
     public void setGivenNameAndFamilyName(String given, String familyName) throws InterruptedException {
         registerButton.click();
         Thread.sleep(1000);
@@ -110,8 +115,13 @@ public class RegistrationPatientPage {
 
     }
     public void confirmPatient(){
-        confirmButton.click();
-        submitButton.click();
+        try {
+            confirmButton.click();
+            iconHome.click();
+        } catch(StaleElementReferenceException e) {
+            e.getMessage();
+        }
+
     }
 
 

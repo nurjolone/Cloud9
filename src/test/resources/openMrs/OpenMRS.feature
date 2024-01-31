@@ -48,11 +48,15 @@ Background: Login functionality
       | System Administration  |
 
 
-<<<<<<< HEAD
-#@TC01
-=======
 
 #@TC01
+
+
+
+#@TC01
+
+
+@registerPatient
 
   Scenario Outline: register patient and validate that patient has been registered
     Given user has to feel in '<given>' and '<familyName>'
@@ -79,8 +83,7 @@ Background: Login functionality
 
 
 
-@TC01
->>>>>>> 3098a0e3962b26f421892810e96e3e13ee35f64c
+
   Scenario Outline: find patient
     Given user on main page clicks on find patient button
     Then user enters '<given>' and '<familyName>' and clicks enter
@@ -88,14 +91,15 @@ Background: Login functionality
     Then user clicks on delete patient button and types reason and click confirm
 
     Examples:
-      | given    | familyName |
-      | Azamat   | Kaldarbaev |
-      | codefish | codefish   |
-      | Codefish | Codefish18 |
-      | a        | c          |
-      | a        | g          |
-      | az       | az         |
-      | Nikolay  | Nikolay    |
+      | given   | familyName|
+      | Nikolay | Nikolay    |
+#      | Azamat   | Kaldarbaev |
+#      | codefish | codefish   |
+#      | Codefish | Codefish18 |
+#      | a        | c          |
+#      | a        | g          |
+#      | az       | az         |
+#      | Nikolay  | Nikolay    |
 
 
 

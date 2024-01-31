@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
         glue = "com/openMRS/steps",
         dryRun = false,
        // tags = "@TC01",
+        //tags = "@TC01",
         plugin = {"pretty", "html:target/uiReport.html", "rerun:target/uiFailedTests.txt"}
 )
 public class OpenMRSrunner {
