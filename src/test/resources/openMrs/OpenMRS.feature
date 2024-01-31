@@ -47,6 +47,17 @@ Background: Login functionality
       | System Administration  |
 
 
+  Scenario Outline: find patient
+    Given user on main page clicks on find patient button
+    Then user enters '<given>' and '<familyName>' and clicks enter
+    And user validates that  '<given>' and '<familyName>' are equal to given and familyName
+    Then user clicks on delete patient button and types reason and click confirm
+
+    Examples:
+      | given      |  |
+      | familyName |  |
+
+
 
 
 
