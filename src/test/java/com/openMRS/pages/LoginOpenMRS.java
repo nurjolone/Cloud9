@@ -63,6 +63,7 @@ public class LoginOpenMRS {
     public void validateErrorMessage(WebDriver driver,String errorMessage){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOf(this.errorMessage));
+
         Assert.assertEquals(BrowserUtils.getText(this.errorMessage),errorMessage,
                 "failed during error message check");
     }
@@ -74,6 +75,7 @@ public class LoginOpenMRS {
     }
     public void validatePopupMsg(WebDriver driver,String popupMessage) throws InterruptedException {
         Thread.sleep(3000);
+
         Assert.assertEquals(BrowserUtils.getText(this.popupMessage),popupMessage,
                 "failed during popup message validation");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
