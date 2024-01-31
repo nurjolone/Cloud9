@@ -22,4 +22,20 @@ public class LoginPageSteps {
         loginOpenMRS.registrationAndLoginBtn();
 
     }
+        @Given("user in OpenMrs page provides invalid {string} and {string}")
+    public void user_in_open_mrs_page_provides_invalid_and(String invalidUserName, String invalidPassword) {
+        loginOpenMRS.InvalidUserNameAndPasswordFiled(invalidUserName,invalidPassword);
+    }
+    @Then("user clicks on  Registration Desk and clicks loginBtn")
+    public void user_clicks_on_registration_desk_and_clicks_login_btn() {
+       loginOpenMRS.registrationAndLoginBtn();
+
+    }
+    @Then("user validates output {string}")
+    public void user_validates_output(String errorMessage) {
+        loginOpenMRS.validateErrorMessage(driver,errorMessage);
+
+
+    }
+
 }

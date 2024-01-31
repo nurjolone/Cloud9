@@ -19,8 +19,9 @@ public class OpenMRShook {
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() throws InterruptedException {
         driver.quit();
+        Thread.sleep(2000);
     }
 }
 
