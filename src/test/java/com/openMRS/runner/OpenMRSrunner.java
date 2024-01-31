@@ -9,11 +9,8 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/openMrs",
         glue = "com/openMRS/steps",
         dryRun = false,
-<<<<<<< HEAD
-        tags = "@TC01",
-=======
+
         tags = "@registerPatient",
->>>>>>> azamat
         plugin = {"pretty", "html:target/uiReport.html", "rerun:target/uiFailedTests.txt"}
 )
 public class OpenMRSrunner {
