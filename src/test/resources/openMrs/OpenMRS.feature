@@ -49,7 +49,7 @@ Background: Login functionality
 
 
 
-#@TC01
+@TC01
 
   Scenario Outline: register patient and validate that patient has been registered
     Given user has to feel in '<given>' and '<familyName>'
