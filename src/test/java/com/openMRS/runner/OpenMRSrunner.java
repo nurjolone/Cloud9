@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/openMrs",
         glue = "com/openMRS/steps",
         dryRun = false,
-        tags = "@smoke",
+       // tags = "@smoke",
         plugin = {"pretty", "html:target/uiReport.html", "rerun:target/uiFailedTests.txt"}
 )
 public class OpenMRSrunner {

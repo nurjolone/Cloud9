@@ -20,7 +20,7 @@ Background: Login functionality
     Examples:
       | header                                                |
       | Logged in as Super User (admin) at Registration Desk. |
-
+#@smoke
 
   Scenario: Validate Home Page
     Then user  clicks on every desks and validate title and click on home button:
