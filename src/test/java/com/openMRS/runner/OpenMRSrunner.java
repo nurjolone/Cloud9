@@ -6,13 +6,6 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-
-
-
-
-
-
-
         features = "src/test/resources/openMrs",
         glue = "com/openMRS/steps",
         dryRun = false,
