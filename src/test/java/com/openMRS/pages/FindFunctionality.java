@@ -43,7 +43,7 @@ public void clickOnFindPatientBtn(){
 public void enterGivenAndFamilyName(String given, String familyName){
     searchBar.sendKeys(given);
     searchBar.sendKeys(" ");
-    searchBar.sendKeys(familyName);
+    searchBar.sendKeys(familyName,Keys.ENTER);
     BrowserUtils.clickOnElement(nameFamilyNameToClick);
 
 
