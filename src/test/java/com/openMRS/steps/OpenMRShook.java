@@ -1,5 +1,6 @@
 package com.openMRS.steps;
 
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -15,6 +16,11 @@ public class OpenMRShook {
     @Before
     public void setUp(){
         driver.get(ConfigReader.readProperty("URL"));
+    }
+
+    @After
+    public void tearDown(){
+        driver.quit();
     }
 }
 
