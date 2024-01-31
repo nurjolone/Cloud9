@@ -54,4 +54,18 @@ public class LoginPageSteps {
 
     }
 
+    @Given("when user in openMrs page user provides {string} and {string}")
+    public void when_user_in_open_mrs_page_user_provides_and(String userName, String password) {
+        loginOpenMRS.positiveLogin(userName,password);
+    }
+    @Then("user click on OpenMRS title logo user clicks cant loginBtn")
+    public void user_click_on_open_mrs_title_logo_user_clicks_cant_login_btn() throws InterruptedException {
+    loginOpenMRS.clickOpenMrsCantLoginBtn(driver);
+
+    }
+    @Then("user validates  {string} and clicks OkBtn")
+    public void user_validates_and_clicks_ok_btn(String popupMessage) throws InterruptedException {
+    loginOpenMRS.validatePopupMsg(driver,popupMessage);
+    }
+
 }
