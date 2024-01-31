@@ -13,6 +13,7 @@ import java.time.Duration;
 public class LoginOpenMRS {
 
 
+
     public LoginOpenMRS (WebDriver driver){
         PageFactory.initElements(driver,this);
 
@@ -57,6 +58,7 @@ public class LoginOpenMRS {
 
 
     }
+
 
 
 }
