@@ -1,8 +1,8 @@
 Feature:  OpenMrs
 
+
 #  @Login
 Background: Login functionality
-
     Given user in OpenMrs page provides 'Admin' and 'Admin123'
     Then user clicks Registration Desk and clicks loginBtn
 
@@ -49,7 +49,31 @@ Background: Login functionality
       | System Administration  |
 
 
-@TC01
+  Scenario Outline: register patient and validate that patient has been registered
+    Given user has to feel in '<given>' and '<familyName>'
+    And user has to choose gender
+    Then user indicates the '<day>' and '<year>'
+    And user has to give an '<address>' , '<city>' , '<state>' , '<country>' , '<postalCode>'
+      | address    | 800 Bayside |
+      | city       | Palatine    |
+      | state      | IL          |
+      | country    | USA         |
+      | postalCode | 60074       |
+    Then user indicates the '<phoneNumber>'
+      | phoneNumber | 7739348346 |
+    And user choose type of relate person and gives name of '<relativeName>'
+      | relativeName | Nikita Krylov |
+    Then user click on confirm and click on submit button
+
+    Examples:
+      | given   | familyName | day | year | address    |city       |state      |country    |postalCode |phoneNumber |relativeName |
+      | Nikolay | Nikolay    | 27  | 1997 |800 Bayside |Palatine    |IL          |USA         |60074       | 7739348346 |Nikita Krylov |
+
+
+
+
+
+
   Scenario Outline: find patient
     Given user on main page clicks on find patient button
     Then user enters '<given>' and '<familyName>' and clicks enter
