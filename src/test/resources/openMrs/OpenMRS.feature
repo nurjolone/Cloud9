@@ -48,7 +48,7 @@ Background: Login functionality
       | Configure Metadata     |
       | System Administration  |
 
-
+@registerPatient
   Scenario Outline: register patient and validate that patient has been registered
     Given user has to feel in '<given>' and '<familyName>'
     And user has to choose gender
