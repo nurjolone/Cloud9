@@ -11,6 +11,7 @@ import utils.BrowserUtils;
 import utils.DriverHelper;
 
 public class LoginOpenMRS {
+
     public LoginOpenMRS (WebDriver driver){
         PageFactory.initElements(driver,this);
 
@@ -33,6 +34,7 @@ public class LoginOpenMRS {
         this.registrationBtn.click();
         this.loginBtn.click();
     }
+
 
 
 

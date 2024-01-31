@@ -5,8 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.BrowserUtils;
 
+import java.time.Duration;
 import java.util.List;
 
 public class HomePage {
@@ -48,10 +51,13 @@ public class HomePage {
     @FindBy(xpath = "//i[@class='icon-home small']")
     WebElement iconHome;
 
-    @FindBy(xpath = "h4")
+    @FindBy(xpath = "//h4")
     WebElement header;
 
-    public void validateHeader (String header){
+    public void validateHeader (WebDriver driver, String header){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOf(this.header));
+
         Assert.assertEquals(BrowserUtils.getText(this.header),header);
 
     }
