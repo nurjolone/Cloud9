@@ -1,6 +1,8 @@
 Feature:  OpenMrs
 
+#  @Login
 Background: Login functionality
+
     Given user in OpenMrs page provides 'Admin' and 'Admin123'
     Then user clicks Registration Desk and clicks loginBtn
 
@@ -10,30 +12,30 @@ Background: Login functionality
     Then user validates home  page '<header>' to check positive login
 
     Examples:
-    |userName|password  | header                                                |
-    |Admin   |Admin123  | Logged in as Super User (admin) at Registration Desk. |
+      | userName | password | header                                                |
+      | Admin    | Admin123 | Logged in as Super User (admin) at Registration Desk. |
+
   Scenario Outline: Negative Login scenario
     Given user in OpenMrs page provides invalid '<invalidUserName>' and '<invalidPassword>'
     Then user clicks on  Registration Desk and clicks loginBtn to successful login
     Then user validates output '<message>'
 
     Examples:
-    |invalidUserName|invalidPassword|message|
-    |admin          |Admin12        |Invalid username/password. Please try again.|
-    |Admi           |admin123       |Invalid username/password. Please try again.|
+      | invalidUserName | invalidPassword | message                                      |
+      | admin           | Admin12         | Invalid username/password. Please try again. |
+      | Admi            | admin123        | Invalid username/password. Please try again. |
 
-    Scenario Outline: User Can't login
-      Given when user in openMrs page user provides '<userName>' and '<password>'
-      Then user click on OpenMRS title logo user clicks cant loginBtn
-      Then user validates  '<popupMessage>' and clicks OkBtn
+  Scenario Outline: User Can't login
+    Given when user in openMrs page user provides '<userName>' and '<password>'
+    Then user click on OpenMRS title logo user clicks cant loginBtn
+    Then user validates  '<popupMessage>' and clicks OkBtn
 
-      Examples:
-      |userName|password|popupMessage|
-      |Admin   |Admin123|Please contact your System Administrator.|
+    Examples:
+      | userName | password | popupMessage                              |
+      | Admin    | Admin123 | Please contact your System Administrator. |
 
 
-#@smoke
-
+#  @HomePageValidate
   Scenario: Validate Home Page
     Then user  clicks on every desks and validate title and click on home button:
       | Find Patient Record    |
@@ -45,6 +47,25 @@ Background: Login functionality
       | Data Management        |
       | Configure Metadata     |
       | System Administration  |
+
+
+@TC01
+  Scenario Outline: find patient
+    Given user on main page clicks on find patient button
+    Then user enters '<given>' and '<familyName>' and clicks enter
+    And user validates that  '<given>' and '<familyName>' are equal to given and familyName
+    Then user clicks on delete patient button and types reason and click confirm
+
+    Examples:
+      | given  | familyName |
+      | Azamat | Kaldarbaev |
+#      | codefish | codefish   |
+#      | Codefish | Codefish18 |
+#      | a        | c          |
+#      | a        | g          |
+
+
+
 
 
 
