@@ -41,9 +41,9 @@ public class RegisterPageSteps {
         patientPage.selectTypeOfRelative(relativeName);
     }
     @Then("user click on confirm and click on submit button")
-    public void user_click_on_confirm_and_click_on_submit_button() {
+    public void user_click_on_confirm_and_click_on_submit_button(){
         patientPage.confirmPatient();
-
+        driver.navigate().refresh();
     }
 
 
