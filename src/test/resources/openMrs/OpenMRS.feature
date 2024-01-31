@@ -4,9 +4,17 @@ Background: Login functionality
     Given user in OpenMrs page provides 'Admin' and 'Admin123'
     Then user clicks Registration Desk and clicks loginBtn
 
+  Scenario Outline: Positive path Login
+    Given user in OpenMrs page provides valid '<userName>' and '<password>'
+    Then user clicks on  Registration Desk and clicks loginBtn
+    Then user validates home  page '<header>' to check positive login
+
+    Examples:
+    |userName|password  | header                                                |
+    |Admin   |Admin123  | Logged in as Super User (admin) at Registration Desk. |
   Scenario Outline: negative path Login
     Given user in OpenMrs page provides invalid '<invalidUserName>' and '<invalidPassword>'
-    Then user clicks on  Registration Desk and clicks loginBtn
+    Then user clicks on  Registration Desk and clicks loginBtn to successful login
     Then user validates output '<message>'
 
     Examples:
@@ -14,12 +22,7 @@ Background: Login functionality
     |admin          |Admin12        |Invalid username/password. Please try again.|
     |Admi           |admin123       |Invalid username/password. Please try again.|
 
-  Scenario Outline:  OpenMrs
-    And user validates that  user in Home page by validating  '<header>'
 
-    Examples:
-      | header                                                |
-      | Logged in as Super User (admin) at Registration Desk. |
 #@smoke
 
   Scenario: Validate Home Page

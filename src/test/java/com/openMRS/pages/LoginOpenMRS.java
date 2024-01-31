@@ -1,6 +1,5 @@
 package com.openMRS.pages;
 
-import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,6 +31,7 @@ public class LoginOpenMRS {
     @FindBy(css = "li[class='nav-item logout']")
     WebElement logout;
 
+
     public void userNameAndPasswordFiled(String userName, String password){
         this.userName.sendKeys(userName);
         this.password.sendKeys(password);
@@ -42,8 +42,13 @@ public class LoginOpenMRS {
     }
 
 
-    public void InvalidUserNameAndPasswordFiled(String userName, String password){
+    public void negativeLogin(String userName, String password){
         logout.click();
+        this.userName.sendKeys(userName);
+        this.password.sendKeys(password);
+    }
+    public void positiveLogin(String userName, String password){
+       logout.click();
         this.userName.sendKeys(userName);
         this.password.sendKeys(password);
     }
