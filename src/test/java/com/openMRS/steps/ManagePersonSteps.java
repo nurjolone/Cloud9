@@ -26,7 +26,11 @@ public class ManagePersonSteps {
     @Then("User enters {string} into line Person Name and clicks checkbox Include deleted")
     public void user_enters_into_line_person_name_and_clicks_checkbox_include_deleted(String name)  {
 
+<<<<<<< HEAD
         managePerson.enterPersonInfo(driver,name);
+=======
+        managePerson.enterPersonInfo(driver, name);
+>>>>>>> update by tina
         managePerson.clickOnPersonInfoLine(name);
 
     }
@@ -35,8 +39,13 @@ public class ManagePersonSteps {
         managePerson.clickTinaName();
     }
     @Then("User deletes existing address in line Address and enter {string} and clicks the button Save Patient")
+<<<<<<< HEAD
     public void user_deletes_existing_address_in_line_address_and_enter_and_clicks_the_button_save_patient(String newAddress)  {
         managePerson.changePersonInfo(driver,newAddress);
+=======
+    public void user_deletes_existing_address_in_line_address_and_enter_and_clicks_the_button_save_patient(String newAddress) throws InterruptedException {
+        managePerson.changePersonInfo(driver, newAddress);
+>>>>>>> update by tina
 
     }
     @Then("User comes back on home page by clicking link Home")
@@ -56,7 +65,11 @@ public class ManagePersonSteps {
     }
 
     @Then("User clicks dropdown Show Contact Info and validates information about address")
+<<<<<<< HEAD
     public void user_clicks_dropdown_show_contact_info_and_validates_information_about_address() {
+=======
+    public void user_clicks_dropdown_show_contact_info_and_validates_information_about_address() throws InterruptedException {
+>>>>>>> update by tina
         managePerson.validateNewAddress(driver);
     }
 
