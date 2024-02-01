@@ -108,6 +108,23 @@ Background: Login functionality
 
 
 
+  @smoke
+  Scenario Outline: positive scenario for creating an active visits
+    Given user is on main page and clicks on find patient record, chooses a patient and clicks on it
+    Then user clicks on start visit button and then on confirm button
+    And user clicks on main page, clicks active visits, chooses the patient, then clicks visits noe
+    Then under add presumed user '<provides>' nvi and clicks on nonCodeNviOption
+    And user clicks confirmed and save button
+    And user clicks conditions, add new conditions and provides '<condition>' headache
+    Then user clicks on headache given option and clicks on save button
+    Then user clicks on main page button, clicks active visits, clicks on patient
+    And user clicks end visit and clicks yes button
+Examples:
+    |provides|condition|
+    |nvi     |headache |
+
+
+
 
 
 
