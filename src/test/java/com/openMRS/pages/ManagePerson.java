@@ -81,7 +81,7 @@ WebElement nameTinaToClick;
 
 
     }
-    public void enterPersonInfo(WebDriver driver, String name) throws InterruptedException {
+    public void enterPersonInfo(WebDriver driver, String name){
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOf(this.address));
@@ -98,7 +98,7 @@ WebElement nameTinaToClick;
         }
     }
 
-    public void changePersonInfo(WebDriver driver, String newAddress) throws InterruptedException {
+    public void changePersonInfo(WebDriver driver, String newAddress){
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOf(this.address));
@@ -131,7 +131,7 @@ WebElement nameTinaToClick;
 
     }
 
-    public void validateNewAddress(WebDriver driver) throws InterruptedException {
+    public void validateNewAddress(WebDriver driver){
 
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
