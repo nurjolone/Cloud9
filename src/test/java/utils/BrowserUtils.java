@@ -4,12 +4,15 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 
@@ -64,7 +67,12 @@ public class BrowserUtils {
             throw  new RuntimeException();
         }
     }
-    public static void  clickOnElement (WebElement element){
+    public static void  clickOnElement (WebDriver driver, WebElement element){
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(element));
+        element.click();
+    }
+
+    public static void clickOnElement(WebElement element){
         element.click();
     }
     public static  String  getTitleWithJs(WebDriver driver){

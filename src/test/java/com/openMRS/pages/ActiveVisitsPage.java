@@ -1,12 +1,14 @@
 package com.openMRS.pages;
 
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.BrowserUtils;
 
 import java.time.Duration;
 import java.util.List;
@@ -87,6 +89,9 @@ public class ActiveVisitsPage {
    @FindBy(xpath = "//input[@id='visitId']//following-sibling::button[contains(text(),'Yes')]")
     WebElement yesBtn;
 
+    @FindBy(xpath = "//span[@id='w8']")
+    WebElement errorMessage;
+
    public void findPatient(){
        findPatientRecord.click();
 
@@ -100,48 +105,49 @@ public class ActiveVisitsPage {
                yesBtnAfterEndVisitPopup.get(i).click();
            }
        }
-
-       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-       wait.until(ExpectedConditions.visibilityOf(this.startVisit));
-       startVisit.click();
-       confirmBtn.click();
+       BrowserUtils.clickOnElement(driver, startVisit);
+       BrowserUtils.clickOnElement(driver, confirmBtn);
    }
 
 
    public void choosePatientForActiveVisit(WebDriver driver){
-       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-       wait.until(ExpectedConditions.visibilityOf(this.mainPageBtn));
-       mainPageBtn.click();
-       wait.until(ExpectedConditions.visibilityOf(this.activeVisitsBtn));
-       activeVisitsBtn.click();
-       wait.until(ExpectedConditions.visibilityOf(this.patientNameBtn));
-       patientNameBtn.click();
-       wait.until(ExpectedConditions.visibilityOf(this.visitNoteBtn.get(0)));
-
-       int num = visitNoteBtn.size();
-       for (int i = num - 1; i < visitNoteBtn.size(); i++) {
-           visitNoteBtn.get(i).click();
+       try {
+           Thread.sleep(1000);
+           mainPageBtn.click();
+           BrowserUtils.clickOnElement(driver, activeVisitsBtn);
+           BrowserUtils.clickOnElement(driver, patientNameBtn);
+           Thread.sleep(1000);
+           int num = visitNoteBtn.size();
+           for (int i = num - 1; i < visitNoteBtn.size(); i++) {
+               visitNoteBtn.get(i).click();
+           }
+       } catch(StaleElementReferenceException e) {
+           e.getMessage();
+       } catch (InterruptedException e) {
+           throw new RuntimeException(e);
        }
+
    }
 
-public void sentNvi(String nvi){
-       diagnosisSearch.click();
-
+    public void sentNvi(WebDriver driver, String nvi){
        diagnosisSearch.sendKeys(nvi);
-       addPresumed.click();
-   }
-   public void clickConfirmedAndSaveBtn(WebDriver driver){
+       BrowserUtils.clickOnElement(driver, addPresumed);
+    }
+
+   public void clickConfirmedAndSaveBtn(WebDriver driver) throws InterruptedException {
        confirmed.click();
-       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-       wait.until(ExpectedConditions.visibilityOf(this.saveBtn));
        saveBtn.click();
+//       Thread.sleep(2000);
+//       if (errorMessage.isDisplayed()){
+//           driver.navigate().refresh();
+//           sentNvi(driver, "nvi");
+//           clickConfirmedAndSaveBtn(driver);
+//       }
    }
    public void headache(WebDriver driver,String headache){
-       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-       wait.until(ExpectedConditions.visibilityOf(this.conditionsBtn));
-       conditionsBtn.click();
-       addNewConditionBtn.click();
-       conditionField.click();
+       BrowserUtils.clickOnElement(driver, conditionsBtn);
+       BrowserUtils.clickOnElement(driver, addNewConditionBtn);
+       BrowserUtils.clickOnElement(driver, conditionField);
        conditionField.sendKeys(headache);
    }
    public void saveClick(){
