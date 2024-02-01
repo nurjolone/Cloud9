@@ -1,14 +1,12 @@
 package com.openMRS.pages;
 
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.BrowserUtils;
 
 import java.time.Duration;
 import java.util.List;
@@ -39,6 +37,23 @@ public class ActiveVisitsPage {
 
    @FindBy(xpath = "//tr//td[2]")
     WebElement patientNameBtn;
+
+
+   @FindBy(xpath ="//div[contains(text(),'Visit Note')]")
+   List<WebElement> visitNoteBtn;
+
+   @FindBy(css = "#diagnosis-search")
+    WebElement diagnosisSearch;
+
+
+   @FindBy(css = "strong[class=matched-name]")
+    WebElement addPresumed;
+
+   @FindBy(xpath = "//input[@data-ng-model='d.confirmed']")
+    WebElement confirmed;
+
+   @FindBy(xpath = "//input[@class='submitButton confirm right']")
+    WebElement saveBtn;
 
    @FindBy(xpath = "//h3[.='CONDITIONS']//following-sibling::i")
     WebElement conditionsBtn;
@@ -83,25 +98,48 @@ public class ActiveVisitsPage {
                yesBtnAfterEndVisitPopup.get(i).click();
            }
        }
-       BrowserUtils.clickOnElement(driver, startVisit);
-       BrowserUtils.clickOnElement(driver, confirmBtn);
+
+       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+       wait.until(ExpectedConditions.visibilityOf(this.startVisit));
+       startVisit.click();
+       confirmBtn.click();
    }
 
 
    public void choosePatientForActiveVisit(WebDriver driver){
-       try {
-           BrowserUtils.clickOnElement(driver, mainPageBtn);
-           BrowserUtils.clickOnElement(driver, activeVisitsBtn);
-           BrowserUtils.clickOnElement(driver, patientNameBtn);
-       } catch(StaleElementReferenceException e) {
-           e.getMessage();
-       }
+       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+       wait.until(ExpectedConditions.visibilityOf(this.mainPageBtn));
+       mainPageBtn.click();
+       wait.until(ExpectedConditions.visibilityOf(this.activeVisitsBtn));
+       activeVisitsBtn.click();
+       wait.until(ExpectedConditions.visibilityOf(this.patientNameBtn));
+       patientNameBtn.click();
+       wait.until(ExpectedConditions.visibilityOf(this.visitNoteBtn.get(0)));
 
+       int num = visitNoteBtn.size();
+       for (int i = num - 1; i < visitNoteBtn.size(); i++) {
+           visitNoteBtn.get(i).click();
+       }
+   }
+
+public void sentNvi(String nvi){
+       diagnosisSearch.click();
+
+       diagnosisSearch.sendKeys(nvi);
+       addPresumed.click();
+   }
+   public void clickConfirmedAndSaveBtn(WebDriver driver){
+       confirmed.click();
+       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+       wait.until(ExpectedConditions.visibilityOf(this.saveBtn));
+       saveBtn.click();
    }
    public void headache(WebDriver driver,String headache){
-       BrowserUtils.clickOnElement(driver, conditionsBtn);
-       BrowserUtils.clickOnElement(driver, addNewConditionBtn);
-       BrowserUtils.clickOnElement(driver, conditionField);
+       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+       wait.until(ExpectedConditions.visibilityOf(this.conditionsBtn));
+       conditionsBtn.click();
+       addNewConditionBtn.click();
+       conditionField.click();
        conditionField.sendKeys(headache);
    }
    public void saveClick(){
