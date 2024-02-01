@@ -67,14 +67,13 @@ public class LoginOpenMRS {
         Assert.assertEquals(BrowserUtils.getText(this.errorMessage),errorMessage,
                 "failed during error message check");
     }
-    public void clickOpenMrsCantLoginBtn(WebDriver driver) throws InterruptedException {
+    public void clickOpenMrsCantLoginBtn(WebDriver driver)  {
         BrowserUtils.clickWithActions(driver,openMrsLogo);
-        Thread.sleep(2000);
+
         BrowserUtils.clickWithJs(driver,cantLoginBtn);
-        Thread.sleep(2000);
+
     }
-    public void validatePopupMsg(WebDriver driver,String popupMessage) throws InterruptedException {
-        Thread.sleep(3000);
+    public void validatePopupMsg(WebDriver driver,String popupMessage)  {
 
         Assert.assertEquals(BrowserUtils.getText(this.popupMessage),popupMessage,
                 "failed during popup message validation");
