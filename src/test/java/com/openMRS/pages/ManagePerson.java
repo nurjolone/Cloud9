@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.BrowserUtils;
-import utils.DriverHelper;
 
 import java.time.Duration;
 import java.util.List;
@@ -82,14 +81,12 @@ WebElement nameTinaToClick;
 
 
     }
-
-    public void enterPersonInfo(WebDriver driver, String name) throws InterruptedException {
+    public void enterPersonInfo(WebDriver driver, String name){
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOf(this.address));
 
         includeDeleteBox.click();
->>>>>>> update by tina
         personNameLine.sendKeys(name);
     }
 
@@ -97,19 +94,14 @@ WebElement nameTinaToClick;
         for(WebElement name : personNames){
             if(BrowserUtils.getText(name).equals(personName)){
                 name.click();
-<<<<<<< HEAD
-
-=======
->>>>>>> update by tina
             }
         }
     }
 
-    public void changePersonInfo(WebDriver driver, String newAddress) throws InterruptedException {
+    public void changePersonInfo(WebDriver driver, String newAddress){
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOf(this.address));
->>>>>>> update by tina
         lineAddress.clear();
 
         lineAddress.sendKeys(newAddress);
@@ -130,36 +122,23 @@ WebElement nameTinaToClick;
     public void findPatientNameAndClickEnter(String name){
 
         searchByNameLine.sendKeys(name, Keys.ENTER);
+
+
     }
 
     public void clickOnFoundedName(){
      findPerson.click();
+
     }
 
-<<<<<<< HEAD
-    public void validateNewAddress(WebDriver driver) {
-=======
-    public void validateNewAddress(WebDriver driver) throws InterruptedException {
+    public void validateNewAddress(WebDriver driver){
 
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOf(this.address));
->>>>>>> update by tina
 
-        BrowserUtils.explicitWaitElement(driver,showContactInfo);
                 showContactInfo.click();
                 Assert.assertTrue(BrowserUtils.getText(address).contains("17Florida"));
-<<<<<<< HEAD
-                Assert.assertTrue(BrowserUtils.getText(address).contains("17Florida\n" +
-                        "Address"));
-//                Assert.assertEquals(BrowserUtils.getText(address),"17Florida, PalatineILUSA60074\n" +
-//                        "Address");
-
-
-    }
-    public void clickTinaName() {
-        nameTinaToClick.click();
-=======
                 Assert.assertEquals(BrowserUtils.getText(address),"17Florida, PalatineILUSA60074\\n" +
                         "Address");
 
@@ -169,9 +148,7 @@ WebElement nameTinaToClick;
        nameTinaToClick.click();
 
     }
->>>>>>> update by tina
 
-    }
 
 
 
