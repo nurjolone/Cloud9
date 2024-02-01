@@ -59,12 +59,12 @@ public class LoginPageSteps {
         loginOpenMRS.positiveLogin(userName,password);
     }
     @Then("user click on OpenMRS title logo user clicks cant loginBtn")
-    public void user_click_on_open_mrs_title_logo_user_clicks_cant_login_btn() throws InterruptedException {
+    public void user_click_on_open_mrs_title_logo_user_clicks_cant_login_btn()  {
     loginOpenMRS.clickOpenMrsCantLoginBtn(driver);
 
     }
     @Then("user validates  {string} and clicks OkBtn")
-    public void user_validates_and_clicks_ok_btn(String popupMessage) throws InterruptedException {
+    public void user_validates_and_clicks_ok_btn(String popupMessage)  {
     loginOpenMRS.validatePopupMsg(driver,popupMessage);
     }
 
