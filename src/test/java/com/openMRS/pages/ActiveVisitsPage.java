@@ -40,23 +40,6 @@ public class ActiveVisitsPage {
    @FindBy(xpath = "//tr//td[2]")
     WebElement patientNameBtn;
 
-
-   @FindBy(xpath ="//div[contains(text(),'Visit Note')]")
-   List<WebElement> visitNoteBtn;
-
-   @FindBy(css = "#diagnosis-search")
-    WebElement diagnosisSearch;
-
-
-   @FindBy(css = "strong[class=matched-name]")
-    WebElement addPresumed;
-
-   @FindBy(xpath = "//input[@data-ng-model='d.confirmed']")
-    WebElement confirmed;
-
-   @FindBy(xpath = "//input[@class='submitButton confirm right']")
-    WebElement saveBtn;
-
    @FindBy(xpath = "//h3[.='CONDITIONS']//following-sibling::i")
     WebElement conditionsBtn;
 
@@ -88,9 +71,6 @@ public class ActiveVisitsPage {
    @FindBy(xpath = "//input[@id='visitId']//following-sibling::button[contains(text(),'Yes')]")
     WebElement yesBtn;
 
-    @FindBy(xpath = "//span[@id='w8']")
-    WebElement errorMessage;
-
    public void findPatient(){
        findPatientRecord.click();
        patient.click();
@@ -110,37 +90,13 @@ public class ActiveVisitsPage {
 
    public void choosePatientForActiveVisit(WebDriver driver){
        try {
-           Thread.sleep(1000);
-           mainPageBtn.click();
+           BrowserUtils.clickOnElement(driver, mainPageBtn);
            BrowserUtils.clickOnElement(driver, activeVisitsBtn);
            BrowserUtils.clickOnElement(driver, patientNameBtn);
-           Thread.sleep(1000);
-           int num = visitNoteBtn.size();
-           for (int i = num - 1; i < visitNoteBtn.size(); i++) {
-               visitNoteBtn.get(i).click();
-           }
        } catch(StaleElementReferenceException e) {
            e.getMessage();
-       } catch (InterruptedException e) {
-           throw new RuntimeException(e);
        }
 
-   }
-
-    public void sentNvi(WebDriver driver, String nvi){
-       diagnosisSearch.sendKeys(nvi);
-       BrowserUtils.clickOnElement(driver, addPresumed);
-    }
-
-   public void clickConfirmedAndSaveBtn(WebDriver driver) throws InterruptedException {
-       confirmed.click();
-       saveBtn.click();
-//       Thread.sleep(2000);
-//       if (errorMessage.isDisplayed()){
-//           driver.navigate().refresh();
-//           sentNvi(driver, "nvi");
-//           clickConfirmedAndSaveBtn(driver);
-//       }
    }
    public void headache(WebDriver driver,String headache){
        BrowserUtils.clickOnElement(driver, conditionsBtn);
