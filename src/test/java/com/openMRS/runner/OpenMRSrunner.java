@@ -11,7 +11,6 @@ import org.junit.runner.RunWith;
         dryRun = false,
         tags = "@registerPatient",
         //tags = "@TC01",
-
         plugin = {"pretty", "html:target/uiReport.html", "rerun:target/uiFailedTests.txt"}
 )
 public class OpenMRSrunner {
