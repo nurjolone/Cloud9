@@ -132,7 +132,7 @@ Background: Login functionality
 
 
 
-  #@smoke
+  @smoke
   Scenario Outline: positive scenario for creating an active visits
     Given user is on main page and clicks on find patient record, chooses a patient and clicks on it
     Then user clicks on start visit button and then on confirm button

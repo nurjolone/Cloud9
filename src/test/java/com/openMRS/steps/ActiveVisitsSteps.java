@@ -14,7 +14,7 @@ public class ActiveVisitsSteps {
 
 
     @Given("user is on main page and clicks on find patient record, chooses a patient and clicks on it")
-    public void user_is_on_main_page_and_clicks_on_find_patient_record_chooses_a_patient_and_clicks_on_it() {
+    public void user_is_on_main_page_and_clicks_on_find_patient_record_chooses_a_patient_and_clicks_on_it() throws InterruptedException {
 
         visitsPage.findPatient();
     }

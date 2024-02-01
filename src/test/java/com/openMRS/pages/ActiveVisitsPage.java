@@ -15,8 +15,9 @@ public class ActiveVisitsPage {
    @FindBy(css = "a[id='coreapps-activeVisitsHomepageLink-coreapps-activeVisitsHomepageLink-extension']")
    WebElement findPatientRecord;
 
-    @FindBy(xpath = "//td[contains(text(),'100JWH')]")
-    WebElement patient;
+   // @FindBy(xpath = "//td[contains(text(),'100JWH')]")
+    @FindBy(xpath = "//td[contains(text(),'Nikolay Nikolay')]")
+   List<WebElement> patient;
 
     @FindBy(xpath = "//div[contains(text(),'Start Visit')] ")
     WebElement startVisit;
@@ -83,9 +84,10 @@ public class ActiveVisitsPage {
    @FindBy(xpath = "//input[@id='visitId']//following-sibling::button[contains(text(),'Yes')]")
     WebElement yesBtn;
 
-   public void findPatient(){
+   public void findPatient() throws InterruptedException {
        findPatientRecord.click();
-       patient.click();
+
+       patient.get(0).click();
    }
 
    public void startVisit() throws InterruptedException {
