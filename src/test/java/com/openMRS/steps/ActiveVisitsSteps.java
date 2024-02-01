@@ -14,7 +14,7 @@ public class ActiveVisitsSteps {
 
 
     @Given("user is on main page and clicks on find patient record, chooses a patient and clicks on it")
-    public void user_is_on_main_page_and_clicks_on_find_patient_record_chooses_a_patient_and_clicks_on_it() throws InterruptedException {
+    public void user_is_on_main_page_and_clicks_on_find_patient_record_chooses_a_patient_and_clicks_on_it() {
 
         visitsPage.findPatient();
     }
@@ -31,13 +31,13 @@ public class ActiveVisitsSteps {
         visitsPage.sentNvi(nvi);
     }
     @Then("user clicks confirmed and save button")
-    public void user_clicks_confirmed_and_save_button() throws InterruptedException {
+    public void user_clicks_confirmed_and_save_button(){
         visitsPage.clickConfirmedAndSaveBtn(driver);
 
     }
     @Then("user clicks conditions, add new conditions and provides {string} headache")
     public void user_clicks_conditions_add_new_conditions_and_provides_headache(String headache) throws InterruptedException {
-        visitsPage.headache(headache);
+        visitsPage.headache(driver,headache);
     }
     @Then("user clicks on headache given option and clicks on save button")
     public void user_clicks_on_headache_given_option_and_clicks_on_save_button() {
@@ -45,7 +45,7 @@ public class ActiveVisitsSteps {
     }
     @Then("user clicks on main page button, clicks active visits, clicks on patient")
     public void user_clicks_on_main_page_button_clicks_active_visits_clicks_on_patient() throws InterruptedException {
-        visitsPage.patientForEndVisit();
+        visitsPage.patientForEndVisit(driver);
     }
     @Then("user clicks end visit and clicks yes button")
     public void user_clicks_end_visit_and_clicks_yes_button() {
