@@ -44,11 +44,12 @@ public class ActiveVisitsSteps {
         visitsPage.saveClick();
     }
     @Then("user clicks on main page button, clicks active visits, clicks on patient")
-    public void user_clicks_on_main_page_button_clicks_active_visits_clicks_on_patient() {
+    public void user_clicks_on_main_page_button_clicks_active_visits_clicks_on_patient() throws InterruptedException {
         visitsPage.patientForEndVisit();
     }
     @Then("user clicks end visit and clicks yes button")
     public void user_clicks_end_visit_and_clicks_yes_button() {
+
         visitsPage.endVisit();
     }
 
