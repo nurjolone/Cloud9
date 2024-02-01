@@ -61,7 +61,7 @@ Background: Login functionality
 
       Examples:
       |name|newAddress|findPersonName|
-      |Tina Tina|17Florida|Tina Tina |
+      |Tina Tina|17Florida|Tina Tina|
 
 
 

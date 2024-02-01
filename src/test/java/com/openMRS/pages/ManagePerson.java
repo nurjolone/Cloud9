@@ -6,9 +6,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.BrowserUtils;
 
+import java.time.Duration;
 import java.util.List;
+
+import static utils.DriverHelper.*;
 
 public class ManagePerson {
 
@@ -56,11 +61,12 @@ public class ManagePerson {
     WebElement showContactInfo;
 
     @FindBy(xpath = "//span[contains(.,'Address')]")
-   // @FindBy(xpath = "//div[@class='contact-info-inline labeled']//span[contains(.,'17Florida, PalatineILUSA60074')]")
     WebElement address;
 
 @FindBy (xpath = "//tr//td[3]")
 WebElement nameTinaToClick;
+
+
 
     public void navigatePages() {
 
@@ -75,10 +81,12 @@ WebElement nameTinaToClick;
 
 
     }
-    public void enterPersonInfo(String name) throws InterruptedException {
+    public void enterPersonInfo(WebDriver driver, String name) throws InterruptedException {
 
-        Thread.sleep(2000);
-        //includeDeleteBox.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOf(this.address));
+
+        includeDeleteBox.click();
         personNameLine.sendKeys(name);
     }
 
@@ -86,15 +94,16 @@ WebElement nameTinaToClick;
         for(WebElement name : personNames){
             if(BrowserUtils.getText(name).equals(personName)){
                 name.click();
-                //break;
             }
         }
     }
 
-    public void changePersonInfo(String newAddress) throws InterruptedException {
+    public void changePersonInfo(WebDriver driver, String newAddress) throws InterruptedException {
 
-        Thread.sleep(2000);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOf(this.address));
         lineAddress.clear();
+
         lineAddress.sendKeys(newAddress);
         savePatientBtn.click();
 
@@ -122,17 +131,22 @@ WebElement nameTinaToClick;
 
     }
 
-    public void validateNewAddress() throws InterruptedException {
-        Thread.sleep(1000);
+    public void validateNewAddress(WebDriver driver) throws InterruptedException {
+
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOf(this.address));
 
                 showContactInfo.click();
                 Assert.assertTrue(BrowserUtils.getText(address).contains("17Florida"));
-                Assert.assertEquals(BrowserUtils.getText(address),"17Florida, PalatineILUSA60074\n" +
+                Assert.assertEquals(BrowserUtils.getText(address),"17Florida, PalatineILUSA60074\\n" +
                         "Address");
 
     }
     public void clickTinaName(){
-        nameTinaToClick.click();
+
+       nameTinaToClick.click();
+
     }
 
 

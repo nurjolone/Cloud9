@@ -26,7 +26,7 @@ public class ManagePersonSteps {
     @Then("User enters {string} into line Person Name and clicks checkbox Include deleted")
     public void user_enters_into_line_person_name_and_clicks_checkbox_include_deleted(String name) throws InterruptedException {
 
-        managePerson.enterPersonInfo(name);
+        managePerson.enterPersonInfo(driver, name);
         managePerson.clickOnPersonInfoLine(name);
 
     }
@@ -36,7 +36,7 @@ public class ManagePersonSteps {
     }
     @Then("User deletes existing address in line Address and enter {string} and clicks the button Save Patient")
     public void user_deletes_existing_address_in_line_address_and_enter_and_clicks_the_button_save_patient(String newAddress) throws InterruptedException {
-        managePerson.changePersonInfo(newAddress);
+        managePerson.changePersonInfo(driver, newAddress);
 
     }
     @Then("User comes back on home page by clicking link Home")
@@ -57,7 +57,7 @@ public class ManagePersonSteps {
 
     @Then("User clicks dropdown Show Contact Info and validates information about address")
     public void user_clicks_dropdown_show_contact_info_and_validates_information_about_address() throws InterruptedException {
-        managePerson.validateNewAddress();
+        managePerson.validateNewAddress(driver);
     }
 
 }
