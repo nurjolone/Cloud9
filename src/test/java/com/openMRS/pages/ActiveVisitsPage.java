@@ -1,5 +1,6 @@
 package com.openMRS.pages;
 
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,7 +15,7 @@ public class ActiveVisitsPage {
    @FindBy(css = "a[id='coreapps-activeVisitsHomepageLink-coreapps-activeVisitsHomepageLink-extension']")
    WebElement findPatientRecord;
 
-    @FindBy(xpath = "//td[contains(text(),'100JAN')]")
+    @FindBy(xpath = "//td[contains(text(),'100JWH')]")
     WebElement patient;
 
     @FindBy(xpath = "//div[contains(text(),'Start Visit')] ")
@@ -69,13 +70,16 @@ public class ActiveVisitsPage {
    @FindBy(xpath = "//i[@class='icon-home small']")
     WebElement smallIconClickAfterSaveBtn;
 
-   @FindBy(xpath = "//a[contains(text(),'Nikolay Nikolay')]")
-    WebElement endVisitPatientName;
-
-   @FindBy(xpath = "//a[@href='javascript:visit.showEndVisitDialog(2408)']" +
-           "//following-sibling::div[@class='col-11 col-lg-10']")
+    @FindBy(xpath = "//a[contains(.,'Active Visits')]")
     WebElement endVisitBtn;
-
+    @FindBy(xpath = "//a[contains(text(),'Nikolay Nikolay')]")
+    WebElement endVisitPatientName;
+    @FindBy(xpath = "//div[@class='row']//following-sibling::i[@class='icon-off']")
+    List<WebElement> endVisitPatient;
+    @FindBy(xpath = "//button[.='Yes']")
+    List<WebElement> yesBtnAfterEndVisitPopup;
+    @FindBy(xpath = "//i[@class='icon-off']")
+    List<WebElement> endVisitListSsPopUp;
    @FindBy(xpath = "//input[@id='visitId']//following-sibling::button[contains(text(),'Yes')]")
     WebElement yesBtn;
 
@@ -85,10 +89,18 @@ public class ActiveVisitsPage {
    }
 
    public void startVisit() throws InterruptedException {
-       Thread.sleep(1000);
+       for (int i = 1; i <endVisitListSsPopUp.size() ; i++) {
+           if(endVisitListSsPopUp.get(i).isDisplayed()){
+               endVisitPatient.get(i).click();
+               yesBtnAfterEndVisitPopup.get(i).click();
+           }
+       }
+
+       Thread.sleep(500);
        startVisit.click();
        confirmBtn.click();
    }
+
 
    public void choosePatientForActiveVisit() throws InterruptedException {
        Thread.sleep(500);
@@ -98,13 +110,19 @@ public class ActiveVisitsPage {
        Thread.sleep(500);
        patientNameBtn.click();
        Thread.sleep(500);
+//       for (int i = 1; i <endVisitListSsPopUp.size() ; i++) {
+//           if(endVisitListSsPopUp.get(i).isDisplayed()){
+//               endVisitPatient.get(i).click();
+//               yesBtnAfterEndVisitPopup.get(i).click();
+//           }
+//       }
 
-       for (int i = 1;i < visitNoteBtn.size(); i++) {
+       int num = visitNoteBtn.size();
+       for (int i = num - 1; i < visitNoteBtn.size(); i++) {
            visitNoteBtn.get(i).click();
-
-
        }
    }
+
 public void sentNvi(String nvi)  {
        diagnosisSearch.click();
 
@@ -127,12 +145,20 @@ public void sentNvi(String nvi)  {
     headacheBtn.click();
     saveConditionBtn.click();
    }
-   public void patientForEndVisit(){
+   public void patientForEndVisit() throws InterruptedException {
+       Thread.sleep(200);
    smallIconClickAfterSaveBtn.click();
-   endVisitPatientName.click();
+
+           endVisitBtn.click();
+           endVisitPatientName.click();
+//       Thread.sleep(200);
    }
    public void endVisit(){
-       endVisitBtn.click();
+       for (int i = 1; i < endVisitPatient.size(); i++) {
+           endVisitPatient.get(i).click();
+
+       }
+
        yesBtn.click();
    }
 
