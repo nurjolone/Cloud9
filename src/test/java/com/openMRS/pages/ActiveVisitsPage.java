@@ -5,7 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class ActiveVisitsPage {
@@ -90,7 +93,7 @@ public class ActiveVisitsPage {
        patient.get(0).click();
    }
 
-   public void startVisit() throws InterruptedException {
+   public void startVisit(WebDriver driver){
        for (int i = 1; i <endVisitListSsPopUp.size() ; i++) {
            if(endVisitListSsPopUp.get(i).isDisplayed()){
                endVisitPatient.get(i).click();
@@ -98,20 +101,22 @@ public class ActiveVisitsPage {
            }
        }
 
-       Thread.sleep(500);
+       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+       wait.until(ExpectedConditions.visibilityOf(this.startVisit));
        startVisit.click();
        confirmBtn.click();
    }
 
 
-   public void choosePatientForActiveVisit() throws InterruptedException {
-       Thread.sleep(500);
+   public void choosePatientForActiveVisit(WebDriver driver){
+       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+       wait.until(ExpectedConditions.visibilityOf(this.mainPageBtn));
        mainPageBtn.click();
-       Thread.sleep(500);
+       wait.until(ExpectedConditions.visibilityOf(this.activeVisitsBtn));
        activeVisitsBtn.click();
-       Thread.sleep(500);
+       wait.until(ExpectedConditions.visibilityOf(this.patientNameBtn));
        patientNameBtn.click();
-       Thread.sleep(500);
+       wait.until(ExpectedConditions.visibilityOf(this.visitNoteBtn.get(0)));
 
        int num = visitNoteBtn.size();
        for (int i = num - 1; i < visitNoteBtn.size(); i++) {
@@ -119,19 +124,21 @@ public class ActiveVisitsPage {
        }
    }
 
-public void sentNvi(String nvi)  {
+public void sentNvi(String nvi){
        diagnosisSearch.click();
 
        diagnosisSearch.sendKeys(nvi);
        addPresumed.click();
    }
-   public void clickConfirmedAndSaveBtn() throws InterruptedException {
+   public void clickConfirmedAndSaveBtn(WebDriver driver){
        confirmed.click();
-       Thread.sleep(500);
+       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+       wait.until(ExpectedConditions.visibilityOf(this.saveBtn));
        saveBtn.click();
    }
-   public void headache(String headache) throws InterruptedException {
-       Thread.sleep(500);
+   public void headache(WebDriver driver,String headache){
+       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+       wait.until(ExpectedConditions.visibilityOf(this.conditionsBtn));
        conditionsBtn.click();
        addNewConditionBtn.click();
        conditionField.click();
@@ -141,8 +148,9 @@ public void sentNvi(String nvi)  {
     headacheBtn.click();
     saveConditionBtn.click();
    }
-   public void patientForEndVisit() throws InterruptedException {
-       Thread.sleep(200);
+   public void patientForEndVisit(WebDriver driver){
+       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+       wait.until(ExpectedConditions.visibilityOf(this.smallIconClickAfterSaveBtn));
    smallIconClickAfterSaveBtn.click();
 
            endVisitBtn.click();
