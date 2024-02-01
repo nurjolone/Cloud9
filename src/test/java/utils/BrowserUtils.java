@@ -68,7 +68,7 @@ public class BrowserUtils {
         }
     }
     public static void  clickOnElement (WebDriver driver, WebElement element){
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(element));
+        new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }
 
