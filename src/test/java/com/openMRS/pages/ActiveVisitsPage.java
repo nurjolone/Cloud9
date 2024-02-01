@@ -87,7 +87,7 @@ public class ActiveVisitsPage {
    @FindBy(xpath = "//input[@id='visitId']//following-sibling::button[contains(text(),'Yes')]")
     WebElement yesBtn;
 
-   public void findPatient() throws InterruptedException {
+   public void findPatient(){
        findPatientRecord.click();
 
        patient.get(0).click();
