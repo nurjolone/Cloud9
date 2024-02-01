@@ -86,7 +86,6 @@ public class ActiveVisitsPage {
 
    public void findPatient() throws InterruptedException {
        findPatientRecord.click();
-
        patient.get(0).click();
    }
 
