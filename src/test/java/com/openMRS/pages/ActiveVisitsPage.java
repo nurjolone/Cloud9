@@ -110,12 +110,6 @@ public class ActiveVisitsPage {
        Thread.sleep(500);
        patientNameBtn.click();
        Thread.sleep(500);
-//       for (int i = 1; i <endVisitListSsPopUp.size() ; i++) {
-//           if(endVisitListSsPopUp.get(i).isDisplayed()){
-//               endVisitPatient.get(i).click();
-//               yesBtnAfterEndVisitPopup.get(i).click();
-//           }
-//       }
 
        int num = visitNoteBtn.size();
        for (int i = num - 1; i < visitNoteBtn.size(); i++) {
@@ -151,7 +145,7 @@ public void sentNvi(String nvi)  {
 
            endVisitBtn.click();
            endVisitPatientName.click();
-//       Thread.sleep(200);
+
    }
    public void endVisit(){
        for (int i = 1; i < endVisitPatient.size(); i++) {
