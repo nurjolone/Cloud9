@@ -28,10 +28,10 @@ public class ActiveVisitsSteps {
     }
     @Then("under add presumed user {string} nvi and clicks on nonCodeNviOption")
     public void under_add_presumed_user_nvi_and_clicks_on_non_code_nvi_option(String nvi) {
-        visitsPage.sentNvi(nvi);
+        visitsPage.sentNvi(driver, nvi);
     }
     @Then("user clicks confirmed and save button")
-    public void user_clicks_confirmed_and_save_button(){
+    public void user_clicks_confirmed_and_save_button() throws InterruptedException {
         visitsPage.clickConfirmedAndSaveBtn(driver);
 
     }
