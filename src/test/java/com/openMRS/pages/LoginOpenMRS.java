@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import utils.BrowserUtils;
+import utils.DriverHelper;
+
 import java.time.Duration;
 public class LoginOpenMRS {
     public LoginOpenMRS (WebDriver driver){
@@ -48,9 +50,9 @@ public class LoginOpenMRS {
     }
 
 
-    public void negativeLogin(WebDriver driver,String userName, String password) throws InterruptedException {
+    public void negativeLogin(WebDriver driver,String userName, String password){
         BrowserUtils.clickWithJs(driver,logout);
-        Thread.sleep(2000);
+
 
 
         this.userName.sendKeys(userName);
@@ -65,8 +67,8 @@ public class LoginOpenMRS {
 
 
     public void validateErrorMessage(WebDriver driver,String errorMessage){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOf(this.errorMessage));
+
+        BrowserUtils.explicitWaitElement(driver,this.errorMessage);
 
         Assert.assertEquals(BrowserUtils.getText(this.errorMessage),errorMessage,
                 "failed during error message check");
