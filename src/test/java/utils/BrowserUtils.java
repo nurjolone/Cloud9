@@ -67,12 +67,7 @@ public class BrowserUtils {
             throw  new RuntimeException();
         }
     }
-    public static void  clickOnElement (WebDriver driver, WebElement element){
-        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.elementToBeClickable(element));
-        element.click();
-    }
-
-    public static void clickOnElement(WebElement element){
+    public static void  clickOnElement (WebElement element){
         element.click();
     }
     public static  String  getTitleWithJs(WebDriver driver){
@@ -163,7 +158,10 @@ public class BrowserUtils {
         Actions actions = new Actions(driver);
         actions.moveToElement(target).build().perform();
     }
-
+    public static void explicitWaitElement (WebDriver driver, WebElement element){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
 
 
 
