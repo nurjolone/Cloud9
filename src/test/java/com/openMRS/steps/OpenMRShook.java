@@ -18,10 +18,10 @@ public class OpenMRShook {
         driver.get(ConfigReader.readProperty("URL"));
     }
 
-//    @After
-//    public void tearDown() throws InterruptedException {
-//        driver.quit();
-//
-//    }
+    @After
+    public void tearDown() throws InterruptedException {
+        driver.quit();
+
+    }
 }
 

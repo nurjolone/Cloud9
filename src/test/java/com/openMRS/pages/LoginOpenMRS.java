@@ -14,7 +14,7 @@ public class LoginOpenMRS {
         PageFactory.initElements(driver,this);
 
     }
-    @FindBy(css ="input[id='username']")
+    @FindBy(xpath ="//input[@id='username' and @name='username']")
     WebElement userName;
     @FindBy(css = "input[id='password']")
     WebElement password;
@@ -26,7 +26,7 @@ public class LoginOpenMRS {
 
     @FindBy(xpath = "//div[@id='error-message']")
     WebElement errorMessage;
-    @FindBy(css = "li[class='nav-item logout']")
+    @FindBy(xpath = "//a[contains(.,'Logout')]")
     WebElement logout;
     @FindBy(css = "div[class='logo']")
     WebElement openMrsLogo;
@@ -48,10 +48,14 @@ public class LoginOpenMRS {
     }
 
 
-    public void negativeLogin(String userName, String password){
-        logout.click();
+    public void negativeLogin(WebDriver driver,String userName, String password) throws InterruptedException {
+        BrowserUtils.clickWithJs(driver,logout);
+        Thread.sleep(2000);
+
+
         this.userName.sendKeys(userName);
         this.password.sendKeys(password);
+
     }
     public void positiveLogin(String userName, String password){
        logout.click();
