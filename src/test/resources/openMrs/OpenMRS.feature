@@ -5,6 +5,7 @@ Background: Login functionality
     Given user in OpenMrs page provides 'Admin' and 'Admin123'
     Then user clicks Registration Desk and clicks loginBtn
 
+
   Scenario Outline: Positive Login scenario
     Given user in OpenMrs page provides valid '<userName>' and '<password>'
     Then user clicks on  Registration Desk and clicks loginBtn
@@ -34,7 +35,7 @@ Background: Login functionality
       | Admin    | Admin123 | Please contact your System Administrator. |
 
 
-#  @HomePageValidate
+
   Scenario: Validate Home Page
     Then user  clicks on every desks and validate title and click on home button:
       | Find Patient Record    |
@@ -61,13 +62,13 @@ Background: Login functionality
 
       Examples:
       |name|newAddress|findPersonName|
-      |Tina Tina|17Florida|Tina Tina|
+      |Tina Tina|17Florida|Tina Tina |
 
 
 
 
 
-#@registerPatient
+@registerPatient
 
   Scenario Outline: register patient and validate that patient has been registered
     Given user has to feel in '<given>' and '<familyName>'
@@ -92,9 +93,6 @@ Background: Login functionality
 
 
 
-
-
-
   Scenario Outline: find patient
     Given user on main page clicks on find patient button
     Then user enters '<given>' and '<familyName>' and clicks enter
@@ -106,18 +104,29 @@ Background: Login functionality
       | Nikolay | Nikolay    |
 
 
-  @smoke
+
   Scenario Outline: positive scenario for creating an active visits
     Given user is on main page and clicks on find patient record, chooses a patient and clicks on it
     Then user clicks on start visit button and then on confirm button
-    And user clicks on main page, clicks active visits, chooses the patient
+    And user clicks on main page, clicks active visits, chooses the patient, then clicks visits noe
+    Then under add presumed user '<provides>' nvi and clicks on nonCodeNviOption
+    And user clicks confirmed and save button
     And user clicks conditions, add new conditions and provides '<condition>' headache
     Then user clicks on headache given option and clicks on save button
     Then user clicks on main page button, clicks active visits, clicks on patient
     And user clicks end visit and clicks yes button
 Examples:
-    |condition|
-    |headache |
+    |provides|condition|
+    |nvi     |headache |
+
+
+  @smoke
+  Scenario: Api Testing
+    Given User on OpenMrs WebSite provides username 'Admin'  password 'Admin123'
+    And User Clicks Registration desk And Clicks LoginBtn
+    Then user click find patient window and enters patient ID and click enter
+    And User validates patient is on the list or not
+
 
 
 
