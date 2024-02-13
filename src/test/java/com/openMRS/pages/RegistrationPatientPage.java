@@ -9,7 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 import utils.BrowserUtils;
 
-public class RegistrationPatientPage {
+public class
+RegistrationPatientPage {
     public RegistrationPatientPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
 
