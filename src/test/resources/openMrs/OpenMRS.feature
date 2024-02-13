@@ -66,8 +66,6 @@ Background: Login functionality
 
 
 
-
-
 @registerPatient
 
   Scenario Outline: register patient and validate that patient has been registered
