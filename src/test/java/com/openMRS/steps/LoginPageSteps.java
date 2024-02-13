@@ -24,8 +24,8 @@ public class LoginPageSteps {
 
     }
         @Given("user in OpenMrs page provides invalid {string} and {string}")
-    public void user_in_open_mrs_page_provides_invalid_and(String invalidUserName, String invalidPassword) {
-        loginOpenMRS.negativeLogin(invalidUserName,invalidPassword);
+    public void user_in_open_mrs_page_provides_invalid_and(String invalidUserName, String invalidPassword) throws InterruptedException {
+        loginOpenMRS.negativeLogin(driver,invalidUserName,invalidPassword);
     }
     @Then("user clicks on  Registration Desk and clicks loginBtn")
     public void user_clicks_on_registration_desk_and_clicks_login_btn() {

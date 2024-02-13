@@ -20,11 +20,11 @@ public class ActiveVisitsSteps {
     }
     @Then("user clicks on start visit button and then on confirm button")
     public void user_clicks_on_start_visit_button_and_then_on_confirm_button() throws InterruptedException {
-       visitsPage.startVisit();
+       visitsPage.startVisit(driver);
     }
     @Then("user clicks on main page, clicks active visits, chooses the patient, then clicks visits noe")
     public void user_clicks_on_main_page_clicks_active_visits_chooses_the_patient_then_clicks_visits_noe() throws InterruptedException {
-        visitsPage.choosePatientForActiveVisit();
+        visitsPage.choosePatientForActiveVisit(driver);
     }
     @Then("under add presumed user {string} nvi and clicks on nonCodeNviOption")
     public void under_add_presumed_user_nvi_and_clicks_on_non_code_nvi_option(String nvi) {
@@ -32,7 +32,7 @@ public class ActiveVisitsSteps {
     }
     @Then("user clicks confirmed and save button")
     public void user_clicks_confirmed_and_save_button() throws InterruptedException {
-        visitsPage.clickConfirmedAndSaveBtn();
+        visitsPage.clickConfirmedAndSaveBtn(driver);
 
     }
     @Then("user clicks conditions, add new conditions and provides {string} headache")

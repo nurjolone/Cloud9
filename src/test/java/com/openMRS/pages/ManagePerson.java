@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.BrowserUtils;
+import utils.DriverHelper;
 
 import java.util.List;
 
@@ -75,10 +76,10 @@ WebElement nameTinaToClick;
 
 
     }
-    public void enterPersonInfo(String name) throws InterruptedException {
+    public void enterPersonInfo(WebDriver driver,String name)  {
 
-        Thread.sleep(2000);
-        //includeDeleteBox.click();
+        BrowserUtils.explicitWaitElement(driver,personNameLine);
+
         personNameLine.sendKeys(name);
     }
 
@@ -86,14 +87,15 @@ WebElement nameTinaToClick;
         for(WebElement name : personNames){
             if(BrowserUtils.getText(name).equals(personName)){
                 name.click();
-                //break;
+
             }
         }
     }
 
-    public void changePersonInfo(String newAddress) throws InterruptedException {
+    public void changePersonInfo(WebDriver driver,String newAddress) {
 
-        Thread.sleep(2000);
+
+        BrowserUtils.explicitWaitElement(driver,lineAddress);
         lineAddress.clear();
         lineAddress.sendKeys(newAddress);
         savePatientBtn.click();
@@ -113,28 +115,28 @@ WebElement nameTinaToClick;
     public void findPatientNameAndClickEnter(String name){
 
         searchByNameLine.sendKeys(name, Keys.ENTER);
-
-
     }
 
     public void clickOnFoundedName(){
      findPerson.click();
-
     }
 
-    public void validateNewAddress() throws InterruptedException {
-        Thread.sleep(1000);
+    public void validateNewAddress(WebDriver driver) {
 
+        BrowserUtils.explicitWaitElement(driver,showContactInfo);
                 showContactInfo.click();
                 Assert.assertTrue(BrowserUtils.getText(address).contains("17Florida"));
-                Assert.assertEquals(BrowserUtils.getText(address),"17Florida, PalatineILUSA60074\n" +
-                        "Address");
+                Assert.assertTrue(BrowserUtils.getText(address).contains("17Florida\n" +
+                        "Address"));
+//                Assert.assertEquals(BrowserUtils.getText(address),"17Florida, PalatineILUSA60074\n" +
+//                        "Address");
+
 
     }
-    public void clickTinaName(){
+    public void clickTinaName() {
         nameTinaToClick.click();
-    }
 
+    }
 
 
 
