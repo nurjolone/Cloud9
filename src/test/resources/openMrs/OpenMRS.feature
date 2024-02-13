@@ -68,19 +68,6 @@ Background: Login functionality
 
 
 
-
-
-
-
-
-
-#@TC01
-
-
-
-#@TC01
-
-
 @registerPatient
 
   Scenario Outline: register patient and validate that patient has been registered
@@ -106,9 +93,6 @@ Background: Login functionality
 
 
 
-
-
-
   Scenario Outline: find patient
     Given user on main page clicks on find patient button
     Then user enters '<given>' and '<familyName>' and clicks enter
@@ -118,21 +102,8 @@ Background: Login functionality
     Examples:
       | given   | familyName|
       | Nikolay | Nikolay    |
-#      | Azamat   | Kaldarbaev |
-#      | codefish | codefish   |
-#      | Codefish | Codefish18 |
-#      | a        | c          |
-#      | a        | g          |
-#      | az       | az         |
-#      | Nikolay  | Nikolay    |
 
 
-
-
-
-
-
-  #@HomePageValidate
 
   Scenario Outline: positive scenario for creating an active visits
     Given user is on main page and clicks on find patient record, chooses a patient and clicks on it
