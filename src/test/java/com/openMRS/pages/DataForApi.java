@@ -36,7 +36,7 @@ public DataForApi(WebDriver driver){
    // @FindBy(xpath = "//input[@class='form-control']")
     @FindBy(css = "#patient-search")
     WebElement inputName;
-    @FindBy (xpath = "//td[contains(.,'Kim karandash')]")
+    @FindBy (xpath = "//td[contains(.,'NIP How Are Guys?')]")
     WebElement kim;
 
 
@@ -62,7 +62,7 @@ public DataForApi(WebDriver driver){
   }
       public void validateCreatedPerson() throws InterruptedException {
           Thread.sleep(5000);
-          Assert.assertEquals("Kim karandash", kim.getText());
+          Assert.assertEquals("NIP How Are Guys? Che Tam Bratishki?", kim.getText());
           System.out.println(kim.getText());
       }
   }

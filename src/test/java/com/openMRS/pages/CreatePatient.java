@@ -27,7 +27,7 @@ public static String alex = "";
        RestAssured.authentication = authScheme;
 
        Response response = given().accept(ContentType.JSON).contentType(ContentType.JSON)
-               .body(Payload.createPerson("Kim","karandash","G","1987-01-01"
+               .body(Payload.createPerson("NIP How Are Guys?","Che Tam Bratishki?","G","1987-01-01"
                ,"NY"))
                .when()
                .post()
